@@ -2,16 +2,21 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 
+///ACCIONES
+
 router.get("/", (req, res) => {
   console.log("Esto es un mensaje para ver en consola");
   models.carrera
+  //busca todos los elementos en la tabla
     .findAll({
+      // atributos que muestra
       attributes: ["id", "nombre"]
     })
     .then(carreras => res.send(carreras))
     .catch(() => res.sendStatus(500));
 });
 
+//inserta datos
 router.post("/", (req, res) => {
   models.carrera
     .create({ nombre: req.body.nombre })
@@ -45,6 +50,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
+// ACTUALIZAR
 router.put("/:id", (req, res) => {
   const onSuccess = carrera =>
     carrera
@@ -66,6 +72,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
+// BORRADO
 router.delete("/:id", (req, res) => {
   const onSuccess = carrera =>
     carrera
