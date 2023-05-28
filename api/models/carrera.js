@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'id_carrera'       // campo con el que voy a igualar 
     })
   };
-  //////////////////////
 
 
   return carrera;
